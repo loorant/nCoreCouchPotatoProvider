@@ -22,3 +22,8 @@ nCore for CouchPotato
 ## Issues/Pull requests
 - Please post issues to this issue tracker which you can find on the right
 - Pull requests are welcome, if you have some improvements/suggestions please feel free
+
+
+## Dependencies
+- Dependencies: `simplejson` package
+You can install it simply with pip `pip install simplejson` or with the system package manager, the package is mostly called `python-simplejson`
