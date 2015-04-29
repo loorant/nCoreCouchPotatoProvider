@@ -9,7 +9,6 @@ from couchpotato.core.helpers.variable import tryInt
 from couchpotato.core.media._base.providers.torrent.base import TorrentProvider
 from couchpotato.core.media.movie.providers.base import MovieProvider
 import traceback
-import simplejson
 
 log = CPLog(__name__)
 
@@ -23,7 +22,7 @@ class nCore(TorrentProvider, MovieProvider):
 
     def _searchOnTitle(self, title, movie, quality, results):
         url = self.urls['search'] % (tryUrlencode(title))
-        data = simplejson.loads(simplejson.dumps(self.getJsonData(url)))
+        data = json.loads(json.dumps(self.getJsonData(url)))
         #data=json.loads(data)
         if data:
             try:
