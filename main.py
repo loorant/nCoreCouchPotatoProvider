@@ -9,6 +9,7 @@ from couchpotato.core.helpers.variable import tryInt
 from couchpotato.core.media._base.providers.torrent.base import TorrentProvider
 from couchpotato.core.media.movie.providers.base import MovieProvider
 import traceback
+import json
 
 log = CPLog(__name__)
 
