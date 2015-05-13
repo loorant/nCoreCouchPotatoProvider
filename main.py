@@ -36,7 +36,7 @@ class nCore(TorrentProvider, MovieProvider):
                         'name': d['release_name'],
                         'url': d['download_url'],
                         'detail_url': d['details_url'],
-                        'size': self.parseSize(d['size']),
+                        'size': tryInt(d['size']) / (1024 * 1024),
                     })
             except:
                 log.error('Failed getting results from %s: %s', (self.getName(), traceback.format_exc()))
