@@ -35,7 +35,7 @@ class nCore(TorrentProvider, MovieProvider):
                         'seeders': d['seeders'],
                         'name': d['release_name'],
                         'url': d['download_url'],
-                        'detail_url': ['details_url'],
+                        'detail_url': d['details_url'],
                         'size': self.parseSize(d['size']),
                     })
             except:
