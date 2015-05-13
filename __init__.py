@@ -48,7 +48,14 @@ config = [{
                               'type': 'int',
                               'default': 96,
                               'description': 'Will not be (re)moved until this seed time (in hours) is met.',
-                          }
+                          },
+                          {
+                              'name': 'extra_score',
+                              'advanced': True,
+                              'type': 'int',
+                              'default': 0,
+                              'description': 'Starting score for each release found via this provider.',
+                          },
                       ],
                   },
               ],
