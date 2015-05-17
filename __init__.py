@@ -50,6 +50,12 @@ config = [{
                               'description': 'Will not be (re)moved until this seed time (in hours) is met.',
                           },
                           {
+                              'name': 'search_categories',
+                              'advanced': True,
+                              'default': 'xvid_hun,xvid,dvd_hun,dvd,dvd9_hun,dvd9,hd_hun,hd',
+                              'description': 'Search categories',
+                          },
+                          {
                               'name': 'extra_score',
                               'advanced': True,
                               'type': 'int',

@@ -16,13 +16,13 @@ log = CPLog(__name__)
 class nCore(TorrentProvider, MovieProvider):
     urls = {
         'login': 'https://ncore.cc/login.php',
-        'search': 'https://ncore.cc/torrents.php?nyit_filmek_resz=true&kivalasztott_tipus[]=xvid_hun&kivalasztott_tipus[]=xvid&kivalasztott_tipus[]=dvd_hun&kivalasztott_tipus[]=dvd&kivalasztott_tipus[]=dvd9_hun&kivalasztott_tipus[]=dvd9&kivalasztott_tipus[]=hd_hun&kivalasztott_tipus[]=hd&mire=%s&miben=name&tipus=kivalasztottak_kozott&submit.x=0&submit.y=0&submit=Ok&tags=&searchedfrompotato=true&jsons=true'
+        'search': 'https://ncore.cc/torrents.php?kivalasztott_tipus=%s&mire=%s&miben=name&tipus=kivalasztottak_kozott&submit.x=0&submit.y=0&submit=Ok&tags=&searchedfrompotato=true&jsons=true'
     }
 
     http_time_between_calls = 1  # seconds
 
     def _searchOnTitle(self, title, movie, quality, results):
-        url = self.urls['search'] % (tryUrlencode(title))
+        url = self.urls['search'] % (self.conf('search_categories'), tryUrlencode(title))
         data = json.loads(json.dumps(self.getJsonData(url)))
         #data=json.loads(data)
         if data:
