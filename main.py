@@ -22,7 +22,8 @@ class nCore(TorrentProvider, MovieProvider):
     http_time_between_calls = 1  # seconds
 
     def _searchOnTitle(self, title, movie, quality, results):
-        url = self.urls['search'] % (self.conf('search_categories'), tryUrlencode(title))
+        categories = self.conf('hu_categories') + ',' + self.conf('en_categories')
+        url = self.urls['search'] % (categories, tryUrlencode(title))
         data = json.loads(json.dumps(self.getJsonData(url)))
         #data=json.loads(data)
         if data:

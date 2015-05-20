@@ -50,10 +50,16 @@ config = [{
                               'description': 'Will not be (re)moved until this seed time (in hours) is met.',
                           },
                           {
-                              'name': 'search_categories',
+                              'name': 'hu_categories',
                               'advanced': True,
-                              'default': 'xvid_hun,xvid,dvd_hun,dvd,dvd9_hun,dvd9,hd_hun,hd',
-                              'description': 'Search categories',
+                              'default': 'xvid_hun,dvd_hun,dvd9_hun,hd_hun',
+                              'description': 'Search categories for Hungarian dubbed movies',
+                          },
+                          {
+                              'name': 'en_categories',
+                              'advanced': True,
+                              'default': 'xvid,dvd,dvd9,hd',
+                              'description': 'Search categories for English or original language movies',
                           },
                           {
                               'name': 'extra_score',
