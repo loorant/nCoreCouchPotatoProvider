@@ -50,6 +50,20 @@ config = [{
                               'description': 'Will not be (re)moved until this seed time (in hours) is met.',
                           },
                           {
+                              'name': 'prefer_hu',
+                              'label': 'Prefer Hungarian',
+                              'type': 'bool',
+                              'default': False,
+                              'description': 'Favors Hungarian dubbed results.',
+                          },
+                          {
+                              'name': 'prefer_en',
+                              'label': 'Prefer English/Original',
+                              'type': 'bool',
+                              'default': False,
+                              'description': 'Favors English or original language over Hungarian dubbed results.',
+                          },
+                          {
                               'name': 'hu_categories',
                               'advanced': True,
                               'default': 'xvid_hun,dvd_hun,dvd9_hun,hd_hun',

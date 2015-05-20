@@ -22,24 +22,30 @@ class nCore(TorrentProvider, MovieProvider):
     http_time_between_calls = 1  # seconds
 
     def _searchOnTitle(self, title, movie, quality, results):
-        categories = self.conf('hu_categories') + ',' + self.conf('en_categories')
+        hu_extra_score = 500 if self.conf('prefer_hu') else 0
+        en_extra_score = 500 if self.conf('prefer_en') else 0
+
+        self.doSearch(title, self.conf('hu_categories'), hu_extra_score, results)
+        self.doSearch(title, self.conf('en_categories'), en_extra_score, results)
+
+    def doSearch(self, title, categories, extra_score, results):
         url = self.urls['search'] % (categories, tryUrlencode(title))
-        data = self.getJsonData(url)
-        if data:
+        try:
+            data = self.getJsonData(url)
             log.info('Number of torrents found on nCore = ' + str(data['total_results']))
-            try:
-                for d in data['results']:
-                    results.append({
-                        'id': d['torrent_id'],
-                        'leechers': d['leechers'],
-                        'seeders': d['seeders'],
-                        'name': d['release_name'],
-                        'url': d['download_url'],
-                        'detail_url': d['details_url'],
-                        'size': tryInt(d['size']) / (1024 * 1024),
-                    })
-            except:
-                log.error('Failed getting results from %s: %s', (self.getName(), traceback.format_exc()))
+            for d in data['results']:
+                results.append({
+                    'id': d['torrent_id'],
+                    'leechers': d['leechers'],
+                    'seeders': d['seeders'],
+                    'name': d['release_name'],
+                    'url': d['download_url'],
+                    'detail_url': d['details_url'],
+                    'size': tryInt(d['size']) / (1024 * 1024),
+                    'score': extra_score,
+                })
+        except:
+            log.error('Failed getting results from %s: %s', (self.getName(), traceback.format_exc()))
 
     def getLoginParams(self):
         return {
