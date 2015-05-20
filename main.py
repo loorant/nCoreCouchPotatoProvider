@@ -27,9 +27,9 @@ class nCore(TorrentProvider, MovieProvider):
         data = json.loads(json.dumps(self.getJsonData(url)))
         #data=json.loads(data)
         if data:
+            log.info('Number of torrents found on nCore = ' + str(data['total_results']))
             try:
                 for d in data['results']:
-                    log.info('Number of torrents found on nCore = ' + str(data['total_results']))
                     results.append({
                         'id': d['torrent_id'],
                         'leechers': d['leechers'],
