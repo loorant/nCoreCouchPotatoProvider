@@ -24,8 +24,7 @@ class nCore(TorrentProvider, MovieProvider):
     def _searchOnTitle(self, title, movie, quality, results):
         categories = self.conf('hu_categories') + ',' + self.conf('en_categories')
         url = self.urls['search'] % (categories, tryUrlencode(title))
-        data = json.loads(json.dumps(self.getJsonData(url)))
-        #data=json.loads(data)
+        data = self.getJsonData(url)
         if data:
             log.info('Number of torrents found on nCore = ' + str(data['total_results']))
             try:
