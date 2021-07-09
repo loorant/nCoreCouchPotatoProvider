@@ -15,8 +15,8 @@ log = CPLog(__name__)
 
 class nCore(TorrentProvider, MovieProvider):
     urls = {
-        'login': 'https://ncore.cc/login.php',
-        'search': 'https://ncore.cc/torrents.php?kivalasztott_tipus=%s&mire=%s&miben=name&tipus=kivalasztottak_kozott&submit.x=0&submit.y=0&submit=Ok&tags=&searchedfrompotato=true&jsons=true'
+        'login': 'https://ncore.pro/login.php',
+        'search': 'https://ncore.pro/torrents.php?kivalasztott_tipus=%s&mire=%s&miben=name&tipus=kivalasztottak_kozott&submit.x=0&submit.y=0&submit=Ok&tags=&searchedfrompotato=true&jsons=true'
     }
 
     http_time_between_calls = 1  # seconds
